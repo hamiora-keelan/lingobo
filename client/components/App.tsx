@@ -1,15 +1,20 @@
-import { useFruits } from '../hooks/useFruits.ts'
+import React from 'react'
+import { Outlet } from 'react-router-dom'
+import WelcomeMessages from './GetWelcome.tsx'
+import Nav from './Nav.tsx'
+import AuthButtons from './Buttons'
+import '../styles/index.scss'
 
-function App() {
-  const { data } = useFruits()
-
+const App: React.FC = () => {
   return (
     <>
-      <div className="app">
-        <h1 className="text-3xl font-bold underline">
-          Fullstack Boilerplate - with Fruits!
-        </h1>
-        <ul>{data && data.map((fruit) => <li key={fruit}>{fruit}</li>)}</ul>
+      <div className="horizontal-container">
+        <Nav />
+      </div>
+      <div className="app color-main">
+        <WelcomeMessages />
+        <AuthButtons />
+        <Outlet />
       </div>
     </>
   )
